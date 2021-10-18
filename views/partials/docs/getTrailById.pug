@@ -1,0 +1,30 @@
+div(class="section")
+  div(class="label") Method 
+  div(class="value get") get 
+div(class="section")
+  div(class="label") Route 
+  div(class="value") http://localhost:8080/api/trails/{id} 
+div(class="section")
+  div(class="label") Description  
+  div(class="value") Returns the trail associated with the numeric Id provided in the route.
+div(class="section")
+  div(class="label") Response  
+  div(class="value")  
+    pre 
+      | [{
+      |    id: 1,
+      |    name: 'Darby Creek Trail',
+      |    state: 'PA',
+      |    town: 'Havertown',
+      |    type: {
+      |       line 1: 'Mountain Bike',
+      |       line 2: 'Walking',
+      |       line 3: 'Road Bike',
+      |    }
+      |    difficulty: 'easy',
+      |    length: '2.0 mi',
+      |    estTime: '50m',
+      |    createdAt: '',
+      |    updatedAt: '',
+      |    deletedAt: null,
+      | }
