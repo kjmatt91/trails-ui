@@ -13,7 +13,6 @@
     "lint:fix": "./node_modules/.bin/eslint --fix --format codeframe .",
     "dev:client:test": "cd client && npm run test",
     "dev:server:test": "./node_modules/.bin/env-cmd ./node_modules/.bin/mocha tests/**/*.test.js"
-
   },
   "repository": {
     "type": "git",
@@ -27,6 +26,7 @@
   "homepage": "https://github.com/kjmatt91/trails-api#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql2": "^2.3.2",
     "pug": "^3.0.2",
