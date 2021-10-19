@@ -2,7 +2,9 @@ const models = require('../models/indexModel')
 
 const getAllTrails = async (request, response) => {
   try {
-    const trails = await models.Trails.findAll()
+    const trails = await models.Trails.findAll({
+      include: [{ model: models.States }]
+    })
 
     return response.send(trails)
   } catch (error) {
@@ -15,7 +17,12 @@ const getTrailById = async (request, response) => {
     const id = parseInt(request.params.id)
 
     const trail = await models.Trails.findOne({
+      attributes: ['id', 'name', 'town', 'type', 'difficulty', 'length', 'estTime'],
       where: { id },
+      include: [{
+        model: models.States,
+        attributes: ['id', 'name'],
+      }],
     })
 
     return trail
@@ -29,15 +36,15 @@ const getTrailById = async (request, response) => {
 const createTrail = async (request, response) => {
   try {
     const {
-      name, state, town, type, difficulty, length, estTime
+      name, town, type, difficulty, length, estTime
     } = request.body
 
-    if (!name || !state || !town || !type || !difficulty || !length || !estTime) {
+    if (!name || !town || !type || !difficulty || !length || !estTime) {
       return response.status(400).send('Please enter all required fields')
     }
 
     const newTrail = await models.Trails.create({
-      name, state, town, type, difficulty, length, estTime
+      name, town, type, difficulty, length, estTime
     })
 
     return response.status(201).send(newTrail)

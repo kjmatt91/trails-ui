@@ -2,10 +2,26 @@
 
 module.exports = {
   up: async (queryInterface) => {
-    await queryInterface.bulkInsert('trails', [
+    await queryInterface.bulkInsert('states', [
+      { name: 'Alabama' },
+      { name: 'Alaska' },
+      { name: 'Arizona' },
+      { name: 'Arkansas' },
+      { name: 'California' },
+      { name: 'Colorado' },
+      { name: 'Connecticut' },
+      { name: 'Delaware' },
+      { name: 'Florida' },
+      { name: 'Georgia' },
+      { name: 'Hawaii' },
+      { name: 'Idaho' },
+      { name: 'Massachusetts' },
+      { name: 'Pennsylvania' },
+    ])
+
+    return queryInterface.bulkInsert('trails', [
       {
         name: 'Darby Creek Trail',
-        state: 'PA',
         town: 'Havertown',
         type: {
           line1: 'Mountain Bike',
@@ -15,9 +31,9 @@ module.exports = {
         difficulty: 'easy',
         length: '2.0 mi',
         estTime: '50m',
+        stateId: 14,
       }, {
         name: 'Skyline Outer Reservoir Loop',
-        state: 'MA',
         town: 'Medford',
         type: {
           line1: 'Hiking',
@@ -27,11 +43,14 @@ module.exports = {
         difficulty: 'moderate',
         length: '8.1 mi',
         estTime: '3h 54m',
+        stateId: 13,
       }
     ])
   },
 
   down: async (queryInterface) => {
     await queryInterface.bulkDelete('trails')
+
+    await queryInterface.bulkDelete('states')
   }
 }
