@@ -1,0 +1,7 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 60px auto 0;
+  width: 60%;
+}

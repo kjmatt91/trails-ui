@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const allConfigs = require('../config/sequelize')
 const TrailsModel = require('./trailsModel')
+const StateModel = require('./stateModel')
 
 const environment = process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
 const config = allConfigs[environment]
@@ -10,5 +11,6 @@ const connection = new Sequelize(config.database, config.username, config.passwo
 })
 
 const Trails = TrailsModel(connection, Sequelize)
+const States = StateModel(connection, Sequelize)
 
-module.exports = { Trails }
+module.exports = { Trails, States, Op: Sequelize.Op, Sequelize }
